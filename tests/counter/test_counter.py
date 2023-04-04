@@ -1,5 +1,6 @@
-# from src.pre_built.counter import count_ocurrences
+from src.pre_built.counter import count_ocurrences
 
 
 def test_counter():
-    pass
+    counter = count_ocurrences("data/jobs.csv", "Developer")
+    assert counter == 352
