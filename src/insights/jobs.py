@@ -1,5 +1,6 @@
 from functools import lru_cache
 from typing import List, Dict
+import csv
 
 
 @lru_cache
@@ -16,7 +17,15 @@ def read(path: str) -> List[Dict]:
     list
         List of rows as dicts
     """
-    raise NotImplementedError
+
+    jobs = []
+
+    with open(path) as file:
+        csv_data = csv.DictReader(file, delimiter=",", quotechar='"')
+        for row in csv_data:
+            jobs.append(row)
+
+    return jobs
 
 
 def get_unique_job_types(path: str) -> List[str]:
